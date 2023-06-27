@@ -1,0 +1,48 @@
+.pageContainer {
+  padding: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.gridItem {
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.bulletless-list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none !important;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+
+.link:hover,
+.link:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.link:active {
+  text-decoration: none;
+  color: inherit;
+}
+

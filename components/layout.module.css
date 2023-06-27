@@ -1,0 +1,12 @@
+.container {
+    max-width: 36rem;
+    padding: 0 1rem;
+    margin: 3rem auto 6rem;
+  }
+
+  .gptclass {
+    color: #003087; /* New York Yankee navy blue color */
+    font-size: 36pt;
+    font-style: italic;
+  }
+  
