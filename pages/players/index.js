@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { createClient } from 'contentful';
-import styles from '../styles/players.module.css';
+import styles from '../../styles/players.module.css';
+import Navigation from '../../components/Navigation';
+import Head from 'next/head';
 import Link from 'next/link';
+import { slugify } from './[playerName]';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -16,11 +19,12 @@ const Players = () => {
       try {
         const response = await client.getEntries({
           content_type: 'playerList',
+          select: 'fields.playerListName,fields.playerPhoto',
         });
         const players = response.items.map((item) => ({
           id: item.sys.id,
-          slug: item.fields.slug,
           name: item.fields.playerListName,
+          photo: item.fields.playerPhoto,
         }));
         const sortedPlayers = sortPlayers(players);
         setPlayerList(sortedPlayers);
@@ -58,13 +62,20 @@ const Players = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
+    <div>
+      <Head>
+        <title>Players</title>
+      </Head>
+      <Navigation />
       <div className={styles.container}>
         <h1>Players</h1>
         <ul className={`${styles.table} ${styles['bulletless-list']}`}>
           {playerList.map((player) => (
             <li key={player.id} className={styles.gridItem}>
-              <Link href={`/players/${player.slug}`}>
+              {player.photo && (
+                <img src={player.photo.fields.file.url} alt={player.name} className={styles.photo} />
+              )}
+              <Link href={`/players/${slugify(player.name)}`}>
                 <div className={styles.link}>{player.name}</div>
               </Link>
             </li>

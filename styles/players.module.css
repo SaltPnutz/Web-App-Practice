@@ -46,3 +46,20 @@
   color: inherit;
 }
 
+.linkText {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.playerPhoto {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.playerName {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 24px;
+}
+
